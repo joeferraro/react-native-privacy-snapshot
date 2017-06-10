@@ -66,6 +66,12 @@ RCT_EXPORT_MODULE();
     }
 }
 
+- (void)dealloc
+{	    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+
 #pragma mark - Public API
 
 RCT_EXPORT_METHOD(enabled:(BOOL) _enable) {
